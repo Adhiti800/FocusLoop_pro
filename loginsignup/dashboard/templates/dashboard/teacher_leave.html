@@ -140,65 +140,48 @@
 
 
 
-        <!-- Leave applications table -->
-        <table class="table" style="height: 200px; scrollbar-width: auto;">
-            <thead>
-                <tr>
-                    <th scope="col">Student name</th>
-                    <th scope="col">Roll Number</th>
-                    <th scope="col">Leave Type</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">End Date</th>
-                    <th scope="col">Reason</th>
-                    <th scope="col">Document</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Response</th>
+<!-- Leave applications table -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student name</th>
+            <th>Leave Type</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for leave in leave_applications %}
+        <tr>
+            <td>{{ leave.student.student_name }}</td>
+            <td>{{ leave.leave_type }}</td>
+            <td>{{ leave.start_date }}</td>
+            <td>{{ leave.end_date }}</td>
+            <td>{{ leave.reason }}</td>
+            <td>{{ leave.status }}</td>
+            <td>
+                <form method="POST" action="{% url 'dashboard:update_leave_status' leave.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="status" value="Rejected">
+                    <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                </form>
+                <form method="POST" action="{% url 'dashboard:update_leave_status' leave.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="status" value="Approved">
+                    <button type="submit" class="btn btn-success btn-sm">Accept</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">No leave applications found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>  
+{% endblock %} 
 
-
-                </tr>
-            </thead>
-            <tbody>
-                {% for leave in leave_applications %}
-                <tr>
-                    <td>{{ leave.student.student_name }} </td>
-                    <td>{{ leave.student.roll_number }}</td>
-                    <td>{{ leave.leave_type }}</td>
-                    <td>{{ leave.start_date }}</td>
-                    <td>{{ leave.end_date }}</td>
-                    <td><textarea readonly class="form-control" field-sizing="content">{{ leave.reason }}</textarea>
-                    </td>
-                    <td>
-                        {% if leave.proof_file %}
-                        <a href="{{ leave.proof_file.url }}" target="_blank" class="btn btn-primary btn-sm">View
-                            Document</a>
-                        {% else %}
-                        No Document
-                        {% endif %}
-                    </td>
-                    <td>{{ leave.status }}</td>
-                    <td>
-                         <form method="POST" action="{% url 'dashboard:update_leave_status' leave.id %}">
-    {% csrf_token %}
-    
-    <textarea name="Remarks" class="form-control mb-2" placeholder="Add a Remark"required></textarea>
-    
-    <div class="d-flex gap-2">
-        <button type="submit" name="status" value="Rejected" class="btn btn-danger btn-sm">Reject</button>
-        <button type="submit" name="status" value="Approved" class="btn btn-success btn-sm">Accept</button>
-    </div>
-</form>
-                         
-                    
-
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="6">No leave applications found.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</div>
-
-{% endblock %}

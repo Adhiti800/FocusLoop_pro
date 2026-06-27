@@ -12,7 +12,13 @@
         background-size: 800% 800%;
         background: linear-gradient(270deg, #FFD6E0, #FFE4E9, #E0F7FA, #FFF3E0);
     }
+        background-size: 800% 800%;
+        background: linear-gradient(270deg, #FFD6E0, #FFE4E9, #E0F7FA, #FFF3E0);
+    }
 
+    @keyframes gradientShift {
+        0% {
+            background-position: 0% 50%;
     @keyframes gradientShift {
         0% {
             background-position: 0% 50%;
@@ -25,6 +31,7 @@
         100% {
             background-position: 0% 50%;
         }
+    }
     }
 
     .navbar-pink a {
@@ -41,7 +48,9 @@
 
     .navbar-pink a:hover {
         background-color: #b588ec;
+        background-color: #b588ec;
         color: #FFFFFF;
+        box-shadow: 0 5px 15px rgb(203, 182, 220);
         box-shadow: 0 5px 15px rgb(203, 182, 220);
         transform: translateY(-3px) scale(1.05);
         padding: 5px 15px;
@@ -73,7 +82,7 @@
         background-color: #3dabe7;
     }
 
-    .btn-info:hover {
+    .btn-info:hover  {
         background-color: #87c9ed;
         color: #FFFFFF;
         box-shadow: 0 5px 15px rgba(16, 181, 226, 0.879);
@@ -85,6 +94,8 @@
     }
 
     .btn-pink-res:hover {
+
+    .btn-pink-res:hover {
         background-color: rgb(38, 246, 6);
         color: #FFFFFF;
         box-shadow: 0 5px 15px rgb(70, 220, 47);
@@ -92,8 +103,10 @@
     }
 
     .navbar-pink {
+    .navbar-pink {
         background-color: #8236de;
         color: white;
+    }
     }
 
     .form-control {
@@ -137,6 +150,7 @@
             <div class="container-fluid">
                 <!--<span class="navbar-brand mb-0 h1 text-white"></span>-->
                 <a href="{% url 'dashboard:teacher_profile' %}">Teacher: {{teacher.teacher_name}}</a>
+                <a href="{% url 'dashboard:teacher_profile' %}">Teacher: {{teacher.teacher_name}}</a>
                 <a href="{% url 'dashboard:teacher_home' %}">Home</a>
                 <a href="{% url 'dashboard:teacher_leave_requests' %}">Leave Applications</a>
 
@@ -150,7 +164,7 @@
         <!--Nav Bar no Owari-->
 
         <!--Main part no Hajimari-->
-        <h2 style="font-weight: bold;">Students' Problems : section {{ teacher.section }}</h2>
+        <h2 style="font-weight: bold;">Students' Problems : section {{ teacher.teacher.section }}</h2>
 
         <p> </p>
 
@@ -161,11 +175,13 @@
                         <thead>
                             <tr>
                                 <th scope="col">Date</th>
+                                <th scope="col">Date</th>
                                 <th scope="col">Student Name</th>
                                 <th scope="col">Complaint Title</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Response</th>
                                 <th scope="col">Response</th>
                             </tr>
                         </thead>
@@ -174,21 +190,34 @@
                             <tr>
                                 <td>{{ complaint.created_at|date:"M d, Y" }}</td>
 
+                                <td>{{ complaint.created_at|date:"M d, Y" }}</td>
+
                                 <td>
                                     {% if complaint.is_anonymous %}
                                     <span class="text-muted"><em>Anonymous</em></span>
+                                    {% if complaint.is_anonymous %}
+                                    <span class="text-muted"><em>Anonymous</em></span>
                                     {% else %}
+                                    {{ complaint.student.student_name }}
                                     {{ complaint.student.student_name }}
                                     {% endif %}
                                 </td>
 
                                 <td>{{ complaint.title }}</td>
 
+
                                 <td>{{ complaint.category }}</td>
+
 
                                 <td>{{ complaint.description }}</td>
 
+
                                 <td>
+                                    <span
+                                        class="badge {% if complaint.status == 'Pending' %}bg-danger{% else %}bg-warning{% endif %}">
+                                        {{ complaint.status }}
+                                    </span>
+                                </td>
                                     <span
                                         class="badge {% if complaint.status == 'Pending' %}bg-danger{% else %}bg-warning{% endif %}">
                                         {{ complaint.status }}
@@ -209,9 +238,28 @@
                                             <button type="submit" name="status" value="Resolved"
                                                 class="btn btn-success btn-sm">Resolved</button>
                                         </div>
+                                <td>
+                                    <form method="post"
+                                        action="{% url 'dashboard:update_complaint_status' complaint.id %}">
+                                        {% csrf_token %}
+                                        <textarea id="Remarks" name="Remarks" class="form-control form-control-sm mb-2"
+                                            placeholder="Add a Remark"
+                                            required>{{ complaint.Remarks|default:'' }}</textarea>
+
+                                        <div class="d-flex gap-1">
+                                            <button type="submit" name="status" value="In Progress"
+                                                class="btn btn-warning btn-sm">In Progress</button>
+                                            <button type="submit" name="status" value="Resolved"
+                                                class="btn btn-success btn-sm">Resolved</button>
+                                        </div>
                                     </form>
                                 </td>
                             </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="7" class="text-center">No complaints found for this section.</td>
+                            </tr>
+                            {% endfor %}
                             {% empty %}
                             <tr>
                                 <td colspan="7" class="text-center">No complaints found for this section.</td>
