@@ -15,7 +15,9 @@ urlpatterns = [
     path('teacher_complain/', views.teacher_complain_view, name='teacher_complain'),
     path('update_leave/<int:leave_id>/',views.update_leave_status,name='update_leave_status'),
     path('update_complaint/<int:complaint_id>/',views.update_complaint_status,name='update_complaint_status'),
-
-
+    path('student_profile/', views.student_profile_view, name='student_profile'),
+    path('teacher_profile/', views.teacher_profile_view, name='teacher_profile'),
+    path('delete_leave_file/<int:leave_id>/', views.delete_leave_file, name='delete_leave_file'),
+    path('replace_leave_file/<int:leave_id>/', views.replace_leave_file, name='replace_leave_file'),
 ]
 

@@ -5,13 +5,31 @@
 
 <style>
   body {
-    background-color: #ffe6f2;
-    /* soft pink background */
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(270deg, #FFD6E0, #FFE4E9, #E0F7FA, #FFF3E0);
+    background-size: 800% 800%;
+    animation: gradientShift 20s ease infinite;
+    transition: opacity 0.5s ease;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
   }
 
   .card {
@@ -60,6 +78,16 @@
   }
 </style>
 
+   {% if messages %}
+                        <div class="mb-3">
+                            {% for message in messages %}
+                            <script>
+                                alert("{{ message }}");
+                            </script>
+                            
+                            {% endfor %}
+                        </div>
+                        {% endif %}
 
 
 
@@ -74,6 +102,11 @@
       <input type="text" class="form-control" name="teacher_name" placeholder="Enter your full name" required>
     </div>
 
+    <div class = "mb-3 text-start">
+      <label class = "form-Label">Teacher ID </label>
+      <input type = "text" class = "form-control" name = "teacher_id" placeholder ="Enter your Teacher ID" required>
+    </div> 
+
     <div class="mb-3 text-start">
       <label class="form-label">Your subject</label>
       <input type="text" class="form-control" name="your_subject" placeholder="Enter your Subject" required>
@@ -83,6 +116,12 @@
       <label class="form-label">Class Assigned</label>
       <input type="text" name="class_assigned" class="form-control" placeholder="e.g., 10th Grade" required>
     </div>
+
+   <div class="mb-4 text-start">
+      <label class="form-label">Section</label>
+      <input type="text" name="section" class="form-control" placeholder="e.g., Section A" required>
+    </div>
+
 
     <button type="submit" class="btn btn-custom">Save Information</button>
   </form>

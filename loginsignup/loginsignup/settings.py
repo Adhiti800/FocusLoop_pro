@@ -51,7 +51,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+]
 ROOT_URLCONF = 'loginsignup.urls'
 
 TEMPLATES = [
@@ -119,13 +122,19 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+
 LOGIN_REDIRECT_URL = 'dashboard:home'
 LOGOUT_REDIRECT_URL = 'base:welcome'
 LOGOUT_REDIRECT_URL = 'login'
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SITE_ID = 1
