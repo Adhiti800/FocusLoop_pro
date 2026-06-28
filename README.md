@@ -1,13 +1,13 @@
-# 📖FocusLoop
+## 📖FocusLoop
 A Student Leave and Campus Management System built using Django.
 
-# 🌟Techonlogies
+## 🌟Techonlogies
 * Django
 * Python
 * Bootstrap
 * SQLite
 
-# 🚀 Features
+## 🚀 Features
 * Manages student leaves and complaints
 * user authentication and registration
 * **Role-based** dashboards
