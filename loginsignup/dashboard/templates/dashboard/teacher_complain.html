@@ -94,10 +94,8 @@
     }
 
     .navbar-pink {
-    .navbar-pink {
         background-color: #8236de;
         color: white;
-    }
     }
 
     .form-control {
@@ -141,7 +139,6 @@
             <div class="container-fluid">
                 <!--<span class="navbar-brand mb-0 h1 text-white"></span>-->
                 <a href="{% url 'dashboard:teacher_profile' %}">Teacher: {{teacher.teacher_name}}</a>
-                <a href="{% url 'dashboard:teacher_profile' %}">Teacher: {{teacher.teacher_name}}</a>
                 <a href="{% url 'dashboard:teacher_home' %}">Home</a>
                 <a href="{% url 'dashboard:teacher_leave_requests' %}">Leave Applications</a>
 
@@ -173,7 +170,6 @@
                                 <th scope="col">Description</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Response</th>
-                                <th scope="col">Response</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -181,15 +177,10 @@
                             <tr>
                                 <td>{{ complaint.created_at|date:"M d, Y" }}</td>
 
-                                <td>{{ complaint.created_at|date:"M d, Y" }}</td>
-
                                 <td>
                                     {% if complaint.is_anonymous %}
                                     <span class="text-muted"><em>Anonymous</em></span>
-                                    {% if complaint.is_anonymous %}
-                                    <span class="text-muted"><em>Anonymous</em></span>
                                     {% else %}
-                                    {{ complaint.student.student_name }}
                                     {{ complaint.student.student_name }}
                                     {% endif %}
                                 </td>
@@ -209,26 +200,7 @@
                                         {{ complaint.status }}
                                     </span>
                                 </td>
-                                    <span
-                                        class="badge {% if complaint.status == 'Pending' %}bg-danger{% else %}bg-warning{% endif %}">
-                                        {{ complaint.status }}
-                                    </span>
-                                </td>
 
-                                <td>
-                                    <form method="post"
-                                        action="{% url 'dashboard:update_complaint_status' complaint.id %}">
-                                        {% csrf_token %}
-                                        <textarea id="Remarks" name="Remarks" class="form-control form-control-sm mb-2"
-                                            placeholder="Add a Remark"
-                                            required>{{ complaint.Remarks|default:'' }}</textarea>
-
-                                        <div class="d-flex gap-1">
-                                            <button type="submit" name="status" value="In Progress"
-                                                class="btn btn-warning btn-sm">In Progress</button>
-                                            <button type="submit" name="status" value="Resolved"
-                                                class="btn btn-success btn-sm">Resolved</button>
-                                        </div>
                                 <td>
                                     <form method="post"
                                         action="{% url 'dashboard:update_complaint_status' complaint.id %}">
