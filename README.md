@@ -14,6 +14,7 @@ A Student Leave and Campus Management System built using Django.
 * Students can fill **anonymous** complaints and submit.
 * Students acan fill **Leave form** also upload documents required for teachers to review.
 * Teachers review, accept or reject the leave application.
+* Teachers can update **status of complaints**  and add **remarks**.
   
 
 
