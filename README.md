@@ -25,7 +25,7 @@ Focus Loop is a web-based student leave and complaint management system that mak
 6. Open local host on your browser.
 
 ## ⚙️ The Process
-In most colleges and campuses, students have to fill paper forms whenever they want to apply for leave or comaplaint, which are then submitted to teachers or administrative staffs, who check and approve them manually. This way of handling leave applications and complaints take a lot of time, get confusing, and sometimes forms are also lost or delayed.Students often don't know about the status of their requests.
+In most colleges and campuses, students have to fill paper forms whenever they want to apply for leave or comaplaint, which are then submitted to teachers or administrative staffs, who check and approve them manually. This way of handling leave applications and complaints take a lot of time, get confusing, and sometimes forms are also lost or delayed. Students often don't know about the status of their requests.
 
 To solve this problem we came up "FocusLoop" a simple web-based eave and complaint management system, that allows student to fill leave forms and submits complaints (Anonymously if required) easily, anytime from anywhere. This completely eliminates all the paper forms and letters. Students no more have to go to departments or wait for teachers in their respective departments. 
 
