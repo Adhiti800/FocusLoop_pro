@@ -38,10 +38,61 @@ Overall, FocusLoop changes the way universities handle leave and complaints. It 
        <img src="Welcome_Page.png" alt="welcome_Image" width="300"> 
     </td>
     <td>
-       <img src="Login.png" alt="Sign_up_Image" width="300">
+       <img src="Login_Page.png" alt="Login_Image" width="300">
     </td>
-
   </tr>
+
+  <tr>
+    <td>
+      <img src="Sign_up.png" alt="Sign_up_Image" width="300">
+    </td>
+  </tr>
+
+   <tr>
+    <td>
+       <img src="Student_registration.png" alt="Student_registration_Image" width="300"> 
+    </td>
+    <td>
+       <img src="Teacher_Registration.png" alt="Teacher_Registration_Image" width="300">
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+       <img src="Student_dashboard.png" alt="Student_dashboard_Image" width="300"> 
+    </td>
+    <td>
+       <img src="Teacher_ dashboard.png" alt="Teacher_ dashboard_Image" width="300">
+    </td>
+  </tr>
+
+   <tr>
+    <td>
+       <img src="Leave_Application.png" alt="Student_Leave_Image" width="300"> 
+    </td>
+    <td>
+           <img src="Complaint_Form.png" alt="Student_Complaint_Image" width="300"> 
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+   <img src="Teacher's leave.png" alt="Teacher_ Leave_Image" width="300">
+    </td>
+    <td>
+       <img src="Teacher_Complaint_page.png" alt="Teacher_Complaint_Image" width="300">
+    </td>
+  </tr>
+
+   <tr>
+    <td>
+       <img src="Student_Info_Page.png" alt="Student_Info_Image" width="300"> 
+    </td>
+    <td>
+       <img src="Teacher_Info_Page.png" alt="Teacher_Info_Image" width="300">
+    </td>
+  </tr>
+  
 </table>
 
 
