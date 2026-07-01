@@ -93,10 +93,12 @@
         transform: translateY(-3px) scale(1.05);
     }
 
+   
     .navbar-pink {
         background-color: #8236de;
         color: white;
     }
+    
 
     .form-control {
         border-radius: 10px;
@@ -162,7 +164,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Date</th>
+                              
                                 <th scope="col">Date</th>
                                 <th scope="col">Student Name</th>
                                 <th scope="col">Complaint Title</th>
@@ -187,16 +189,14 @@
 
                                 <td>{{ complaint.title }}</td>
 
-
                                 <td>{{ complaint.category }}</td>
-
 
                                 <td>{{ complaint.description }}</td>
 
 
                                 <td>
-                                    <span
-                                        class="badge {% if complaint.status == 'Pending' %}bg-danger{% else %}bg-warning{% endif %}">
+                                  
+                                          <span class="badge {% if complaint.status == 'Pending' %}bg-danger{% else %}bg-warning{% endif %}">
                                         {{ complaint.status }}
                                     </span>
                                 </td>
@@ -215,6 +215,7 @@
                                             <button type="submit" name="status" value="Resolved"
                                                 class="btn btn-success btn-sm">Resolved</button>
                                         </div>
+
                                     </form>
                                 </td>
                             </tr>
