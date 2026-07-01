@@ -44,7 +44,7 @@ Overall, FocusLoop changes the way universities handle leave and complaints. It 
 
   <tr>
     <td>
-      <img src="Photos/Signup.png" alt="Sign_up_Image" width="300">
+      <img src="Photos/Sign_up.png" alt="Sign_up_Image" width="300">
     </td>
   </tr>
 
